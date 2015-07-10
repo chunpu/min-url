@@ -1,6 +1,7 @@
 min-url
 ===
 
+[![Build status][travis-image]][travis-url]
 [![NPM version][npm-image]][npm-url]
 [![Downloads][downloads-image]][downloads-url]
 [![Dependency Status][david-image]][david-url]
@@ -11,8 +12,9 @@ min-url
 [david-image]: http://img.shields.io/david/chunpu/min-url.svg?style=flat-square
 [david-url]: https://david-dm.org/chunpu/min-url
 
+[![Test coverage][coveralls-image]][coveralls-url]
 
-
+Simple Url Parse and Format
 
 Installation
 ---
@@ -52,5 +54,9 @@ License
 
 [![License][license-image]][license-url]
 
+[travis-image]: https://img.shields.io/travis/chunpu/min-url.svg?style=flat-square
+[travis-url]: https://travis-ci.org/chunpu/min-url
+[coveralls-image]: https://img.shields.io/coveralls/chunpu/min-url/gh-pages.svg?style=flat-square
+[coveralls-url]: https://coveralls.io/r/chunpu/min-url
 [license-image]: http://img.shields.io/npm/l/min-url.svg?style=flat-square
 [license-url]: #

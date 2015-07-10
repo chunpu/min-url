@@ -29,7 +29,10 @@ exports.parse = function(url, parseQuery) {
 	}
 	ret.query = query
 
-	if ('/' != rest[0]) {
+	// rest: `//user:pass@host.com:8080/p/a/t/h`
+
+	// not normal like http url
+	if ('/' != rest.charAt(0)) {
 		if (ret.schema) {
 			// rootless paths per RFC 3986 as opaque
 			// like mailto:xxx.com/path
@@ -38,14 +41,13 @@ exports.parse = function(url, parseQuery) {
 		}
 	}
 
+	// normal
 	if (0 == rest.indexOf('//')) {
 		rest = rest.slice(2)
 		arr = split(rest, '/')
 
-		// path
-		if (arr[1]) {
-			ret.pathname = '/' + unescape(arr[1])
-		}
+		ret.pathname = '/' + unescape(arr[1] || '')
+
 		arr = parseAuthority(arr[0])
 		ret.auth = arr[0]
 
@@ -53,7 +55,7 @@ exports.parse = function(url, parseQuery) {
 		var host = arr[1]
 		arr = split(host, ':')
 		ret.hostname = arr[0]
-		ret.port = arr[1]
+		ret.port = ~~arr[1]
 	}
 
 	return ret
@@ -86,7 +88,9 @@ exports.format = function(obj) {
 	if (query) {
 		if ('string' != typeof query) {
 			query = qs.stringify(query)
-			arr.push('?', query)
+			if (query) {
+				arr.push('?', query)
+			}
 		}
 	}
 
