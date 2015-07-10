@@ -13,13 +13,13 @@ url.parse('http://user:pass@host.com:8080/p/a/t/h?query=string#hash', true)
   pathname: '/p/a/t/h',
   auth: 'user:pass',
   hostname: 'host.com',
-  port: '8080' }
+  port: 8080 }
 */
 ```
 
 Api
 ---
 
-- `url.parse(string[, shouldParseQuery])`
+- `url.parse(string, [shouldParseQuery])`
 
 - `url.format(object)`
