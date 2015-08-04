@@ -75,4 +75,18 @@ describe('format', function() {
 		assert.equal(Url.format(obj), str)
 	})
 
+	it('support nested format', function() {
+		var expect = 'http://www.google.com/path?query=string&foo=bar'
+		var obj = {
+			  protocol: 'http:'
+			, hostname: 'www.google.com'
+			, pathname: '/path'
+			, query: 'query=string&foo=bar'
+		}
+		var str = Url.format(obj)
+		assert.deepEqual(str, expect)
+		assert.deepEqual(Url.format(str), expect)
+		assert.deepEqual(Url.format(Url.format(str)), expect)
+	})
+
 })

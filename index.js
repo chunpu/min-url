@@ -67,7 +67,7 @@ exports.parse = function(url, parseQuery) {
 var slashProtocols = 'http https ftp gopher file'.split(' ')
 
 exports.format = function(obj) {
-	obj = obj || {}
+	if (!obj || 'object' != typeof obj) return obj
 	var protocol = obj.protocol
 	var arr = [protocol]
 
