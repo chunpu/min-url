@@ -27,9 +27,11 @@ Usage
 ---
 
 ```js
-var url = require('min-url')
+var Url = require('min-url')
 
-url.parse('http://user:pass@host.com:8080/p/a/t/h?query=string#hash', true)
+var url = Url.parse('http://user:pass@host.com:8080/p/a/t/h?query=string#hash', true)
+
+console.log(url)
 
 /* =>
 { hash: '#hash',
@@ -45,9 +47,11 @@ url.parse('http://user:pass@host.com:8080/p/a/t/h?query=string#hash', true)
 Api
 ---
 
-- `url.parse(string, [shouldParseQuery])`
+- `Url.parse(string, [shouldParseQuery])`
 
-- `url.format(object)`
+- `Url.format(object)`
+
+
 
 License
 ---

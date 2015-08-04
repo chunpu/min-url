@@ -1,12 +1,12 @@
 var assert = require('assert')
-var url = require('./')
-var _url = require('url')
+var Url = require('./')
+var _Url = require('url')
 
 var fullUrl = 'http://user:pass@host.com:8080/p/a/t/h?query=string#hash'
 
 describe('parse', function() {
 	it('full element', function() {
-		var ret = url.parse(fullUrl, true)
+		var ret = Url.parse(fullUrl, true)
 		assert.deepEqual({
 			  protocol: 'http:'
 			, auth: 'user:pass'
@@ -22,7 +22,7 @@ describe('parse', function() {
 
 	it('simple url', function() {
 		var str = 'https://www.google.com/#q=search'
-		assert.deepEqual(url.parse(str, true), {
+		assert.deepEqual(Url.parse(str, true), {
 			  protocol: 'https:'
 			, hostname: 'www.google.com'
 			, port: 0
@@ -31,6 +31,16 @@ describe('parse', function() {
 			, hash: '#q=search'
 			, auth: null
 		})
+	})
+
+	it('support nested parse', function() {
+		var url = Url.parse(fullUrl)
+		var url2 = Url.parse(url)
+		assert(url2 === url)
+		var url3 = Url.parse(url2)
+		assert(url3 === url)
+		var str = Url.format(url)
+		assert.deepEqual(str, fullUrl)
 	})
 })
 
@@ -47,7 +57,7 @@ describe('format', function() {
 			}
 			, hash: '#hash'
 		}
-		var str = url.format(obj)
+		var str = Url.format(obj)
 		assert(str == fullUrl)
 	})
 
@@ -62,7 +72,7 @@ describe('format', function() {
 			, hash: '#q=search'
 			, auth: null
 		}
-		assert.equal(url.format(obj), str)
+		assert.equal(Url.format(obj), str)
 	})
 
 })

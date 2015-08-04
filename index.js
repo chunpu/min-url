@@ -5,6 +5,10 @@
 var qs = require('min-qs')
 
 exports.parse = function(url, parseQuery) {
+	if ('string' != typeof url) {
+		return url
+	}
+
 	var ret = {}, arr, rest
 
 	// hash
@@ -87,9 +91,9 @@ exports.format = function(obj) {
 	if (query) {
 		if ('string' != typeof query) {
 			query = qs.stringify(query)
-			if (query) {
-				arr.push('?', query)
-			}
+		}
+		if (query) {
+			arr.push('?', query)
 		}
 	}
 
