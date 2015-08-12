@@ -3,6 +3,7 @@
 // e.g. http://user:pass@host.com:8080/p/a/t/h?query=string#hash
 
 var qs = require('min-qs')
+var _ = require('min-util')
 
 exports.parse = function(url, parseQuery) {
 	if ('string' != typeof url) {
@@ -45,7 +46,7 @@ exports.parse = function(url, parseQuery) {
 	}
 
 	// normal
-	if (0 == rest.indexOf('//')) {
+	if (_.startsWith(rest, '//')) {
 		rest = rest.slice(2)
 		arr = split(rest, '/')
 
@@ -71,7 +72,7 @@ exports.format = function(obj) {
 	var protocol = obj.protocol
 	var arr = [protocol]
 
-	if (!protocol || -1 != slashProtocols.indexOf(protocol.substr(0, protocol.length - 1))) {
+	if (!protocol || _.includes(slashProtocols, protocol.slice(0, protocol.length - 1))) {
 		arr.push('//')
 	}
 	
@@ -118,12 +119,12 @@ function splicePattern(str, reg) {
 
 function split(str, sep) {
 	var arr = []
-	var index = str.indexOf(sep)
+	var index = _.indexOf(str, sep)
 	if (-1 == index) {
 		arr[0] = str
 	} else {
-		arr[0] = str.substr(0, index)
-		arr[1] = str.substr(index + sep.length)
+		arr[0] = str.slice(0, index)
+		arr[1] = str.slice(index + sep.length)
 	}
 	return arr
 }
