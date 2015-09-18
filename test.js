@@ -89,4 +89,20 @@ describe('format', function() {
 		assert.deepEqual(Url.format(Url.format(str)), expect)
 	})
 
+	it('support object query format', function() {
+		var expect = 'http://www.google.com/path?query=string'
+		var obj = {
+			  protocol: 'http:'
+			, hostname: 'www.google.com'
+			, pathname: '/path'
+			, query: {
+				query: 'string'
+			}
+		}
+		var str = Url.format(obj)
+		assert.deepEqual(str, expect)
+		assert.deepEqual(Url.format(str), expect)
+		assert.deepEqual(Url.format(Url.format(str)), expect)
+	})
+
 })
