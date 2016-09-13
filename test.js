@@ -17,6 +17,7 @@ describe('parse', function() {
 				query: 'string'
 			}
 			, hash: '#hash'
+			, href: fullUrl
 		}, ret)
 	})
 
@@ -30,6 +31,7 @@ describe('parse', function() {
 			, query: {}
 			, hash: '#q=search'
 			, auth: null
+			, href: str
 		})
 	})
 

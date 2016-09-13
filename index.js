@@ -12,6 +12,8 @@ exports.parse = function(url, parseQuery) {
 
 	var ret = {}, arr, rest
 
+	ret.href = url
+
 	// hash
 	arr = split(url, '#')
 	rest = arr[0]
