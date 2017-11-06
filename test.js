@@ -107,4 +107,32 @@ describe('format', function() {
 		assert.deepEqual(Url.format(Url.format(str)), expect)
 	})
 
+	it('support url.appendQuery', function() {
+	    assert.deepEqual(
+	        Url.appendQuery('http://host.com', {query: 'string'}),
+	        'http://host.com?query=string'
+	    );
+	    assert.deepEqual(
+	        Url.appendQuery('http://host.com?', {query: 'string'}),
+	        'http://host.com?query=string'
+	    );
+	    assert.deepEqual(
+	        Url.appendQuery('http://host.com?a=b', {query: 'string'}),
+	        'http://host.com?a=b&query=string'
+	    );
+	    assert.deepEqual(
+	        Url.appendQuery('http://host.com?ip=[IP]&#hash', {query: 'string'}),
+	        'http://host.com?ip=[IP]&query=string#hash',
+	        '原始宏替换括号不应该被 escape'
+	    );
+	    assert.deepEqual(
+	        Url.appendQuery('http://host.com?a=b#hash', {query: 'string'}),
+	        'http://host.com?a=b&query=string#hash'
+	    );
+	    assert.deepEqual(
+	        Url.appendQuery('http://host.com?a=b#hash', 'query=string'),
+	        'http://host.com?a=b&query=string#hash'
+	    );
+	})
+
 })

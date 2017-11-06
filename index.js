@@ -110,6 +110,34 @@ exports.format = function(obj) {
 	return ret.join('')
 }
 
+exports.appendQuery = function(url, query) {
+    var arr = split(url, '#')
+    url = arr[0]
+    var fragment = arr[1]
+    
+    if (_.isObject(query)) {
+    	query = qs.stringify(query)
+    }
+
+    if (_.includes(url, '?')) {
+        // has query
+        if (!_.endsWith(url, '&') && !_.endsWith(url, '?')) {
+            query = '&' + query
+        }
+    } else {
+        // no query
+        query = '?' + query
+    }
+
+    url += query
+
+    if (fragment) {
+        url += '#' + fragment
+    }
+
+    return url
+}
+
 function splicePattern(str, reg) {
 	var ret = ''
 	str = str.replace(reg, function(matched) {

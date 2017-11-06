@@ -52,6 +52,8 @@ Api
 
 - `Url.format(object)`
 
+- `Url.appendQuery(url, query)` append query string/object to url
+
 
 Progress
 ---
