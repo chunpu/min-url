@@ -20,7 +20,7 @@ exports.parse = function(url, parseQuery) {
 	if (arr[1]) {
 		ret.hash = '#' + arr[1]
 	}
-	
+
 	// get scheme
 	arr = splicePattern(rest, /^[a-zA-Z][a-zA-Z0-9+-.]*:/)
 	rest = arr[1]
@@ -77,11 +77,11 @@ exports.format = function(obj) {
 	if (!protocol || _.includes(slashProtocols, protocol.slice(0, protocol.length - 1))) {
 		arr.push('//')
 	}
-	
+
 	if (obj.auth) {
 		arr.push(obj.auth, '@')
 	}
-	
+
 	arr.push(obj.hostname)
 
 	if (obj.port) {
@@ -114,7 +114,7 @@ exports.appendQuery = function(url, query) {
     var arr = split(url, '#')
     url = arr[0]
     var fragment = arr[1]
-    
+
     if (_.isObject(query)) {
     	query = qs.stringify(query)
     }
@@ -122,14 +122,21 @@ exports.appendQuery = function(url, query) {
     if (_.includes(url, '?')) {
         // has query
         if (!_.endsWith(url, '&') && !_.endsWith(url, '?')) {
-            query = '&' + query
+        	if (query) {
+        		query = '&' + query
+        	}
         }
+
     } else {
         // no query
-        query = '?' + query
+        if (query) {
+        	query = '?' + query
+        }
     }
 
-    url += query
+    if (query) {
+    	url += query
+    }
 
     if (fragment) {
         url += '#' + fragment

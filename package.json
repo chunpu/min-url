@@ -1,6 +1,6 @@
 {
   "name": "min-url",
-  "version": "1.4.0",
+  "version": "1.4.1",
   "description": "Simple Url Parse and Format",
   "main": "index.js",
   "dependencies": {

@@ -133,6 +133,18 @@ describe('format', function() {
 	        Url.appendQuery('http://host.com?a=b#hash', 'query=string'),
 	        'http://host.com?a=b&query=string#hash'
 	    );
+	    assert.deepEqual(
+	        Url.appendQuery('http://host.com?a=b#hash', undefined),
+	        'http://host.com?a=b#hash'
+	    );
+	    assert.deepEqual(
+	        Url.appendQuery('http://host.com?a=b#hash', {}),
+	        'http://host.com?a=b#hash'
+	    );
+	    assert.deepEqual(
+	        Url.appendQuery('http://host.com', {}),
+	        'http://host.com'
+	    );
 	})
 
 })
