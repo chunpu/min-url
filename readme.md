@@ -13,7 +13,6 @@ min-url
 [david-image]: http://img.shields.io/david/chunpu/min-url.svg?style=flat-square
 [david-url]: https://david-dm.org/chunpu/min-url
 
-[![Test coverage][coveralls-image]][coveralls-url]
 
 Simple Url Parse and Format
 
@@ -114,7 +113,5 @@ License
 
 [travis-image]: https://img.shields.io/travis/chunpu/min-url.svg?style=flat-square
 [travis-url]: https://travis-ci.org/chunpu/min-url
-[coveralls-image]: https://img.shields.io/coveralls/chunpu/min-url/gh-pages.svg?style=flat-square
-[coveralls-url]: https://coveralls.io/r/chunpu/min-url
 [license-image]: http://img.shields.io/npm/l/min-url.svg?style=flat-square
 [license-url]: #

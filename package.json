@@ -4,8 +4,8 @@
   "description": "Simple Url Parse and Format",
   "main": "index.js",
   "dependencies": {
-    "min-qs": "latest",
-    "min-util": "latest"
+    "min-qs": "github:chunpu/min-qs",
+    "min-util": "github:chunpu/min-util"
   },
   "devDependencies": {
     "browserify": "latest",
