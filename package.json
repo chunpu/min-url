@@ -1,11 +1,11 @@
 {
   "name": "min-url",
-  "version": "1.4.1",
+  "version": "1.5.0",
   "description": "Simple Url Parse and Format",
   "main": "index.js",
   "dependencies": {
-    "min-qs": "github:chunpu/min-qs",
-    "min-util": "github:chunpu/min-util"
+    "min-qs": "^1.4.0",
+    "min-util": "^3.3.1"
   },
   "devDependencies": {
     "browserify": "latest",
